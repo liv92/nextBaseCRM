@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class AutoTesting_US3_AC1_G2863 {
+public class AutoTesting_US4_AC1_G2863 {
 
     public static void main(String[] args) throws InterruptedException {
 
