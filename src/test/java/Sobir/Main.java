@@ -18,7 +18,7 @@ public class Main {
             "marketing56@cybertekschool.com"
     };
     String pswd = "UserUser";
-    String loginURL = "https://login2.nextbasecrm.com/stream/";
+    String loginURL = "https://login2.nextbasecrm.com";
 
     WebDriverManager.chromedriver().setup();
     WebDriver dr = new ChromeDriver();
@@ -49,6 +49,11 @@ public class Main {
         System.out.println("\t"+each + " login FAILED");
         System.out.println("\t\tactualHomeURL = " + actualHomeURL);
         System.out.println("\t\texpectedHomeURL = " + expectedHomeURL);
+        System.out.println("7th step: Logout " + each);
+        dr.findElement(By.xpath("//div[@id='user-block']")).click();
+        Thread.sleep(500L);
+        dr.findElement(By.xpath("//span[.='Log out']")).click();
+        Thread.sleep(500L);
         continue;
       }
       Thread.sleep(500L);
@@ -64,6 +69,11 @@ public class Main {
         System.out.println("\t"+each + " Click on \"Time and Reports\" module FAIL");
         System.out.println("\t\tactualTimeURL = " + actualTimeURL);
         System.out.println("\t\texpectedTimeURL = " + expectedTimeURL);
+        System.out.println("7th step: Logout " + each);
+        dr.findElement(By.xpath("//div[@id='user-block']")).click();
+        Thread.sleep(500L);
+        dr.findElement(By.xpath("//span[.='Log out']")).click();
+        Thread.sleep(500L);
         continue;
       }
       Thread.sleep(500L);
@@ -105,6 +115,11 @@ public class Main {
         System.out.println("\t" + each + " Click \"Worktime\" link FAIL");
         System.out.println("\tactualWorktimeURL = " + actualWorktimeURL);
         System.out.println("\texpertedWorktimeURL = " + expertedWorktimeURL);
+        System.out.println("7th step: Logout " + each);
+        dr.findElement(By.xpath("//div[@id='user-block']")).click();
+        Thread.sleep(500L);
+        dr.findElement(By.xpath("//span[.='Log out']")).click();
+        Thread.sleep(500L);
         continue;
       }
       Thread.sleep(500L);
