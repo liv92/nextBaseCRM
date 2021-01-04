@@ -140,9 +140,9 @@ public class Main{
       Thread.sleep(500L);
       System.out.println("6th step: Click on \"Show start and end times' checkbox for " + each);
       if(!table.getAttribute("class").contains("bx-tm-additions-disabled")){
-        System.out.println("\t" + each + " click on \"Statistics\" checkbox PASS");
+        System.out.println("\t" + each + " click on \"Show start and end times\" checkbox PASS");
       }else {
-        System.out.println("\t" + each + " click on \"Statistics\" checkbox FAIL");
+        System.out.println("\t" + each + " click on \"Show start and end times\" checkbox FAIL");
       }
       Thread.sleep(500L);
       System.out.println("7th step: Logout " + each);
