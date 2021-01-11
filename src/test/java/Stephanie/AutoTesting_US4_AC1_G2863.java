@@ -1,13 +1,21 @@
 package Stephanie;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import javafx.util.Builder;
+import jdk.nashorn.internal.runtime.arrays.AnyElements;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+import java.awt.*;
+import java.awt.event.KeyEvent;
 
 public class AutoTesting_US4_AC1_G2863 {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, AWTException {
 
         //Set up
         WebDriverManager.chromedriver().setup();
@@ -34,10 +42,12 @@ public class AutoTesting_US4_AC1_G2863 {
         //Step 1: From the home page, user should be able to click in poll module
         driver.findElement(By.xpath("//span[@id = 'feed-add-post-form-tab-vote']")).click();
 
+
         //Step 2: User should be able to enter/type valid Poll message data into the "Message" input box
         // Enter "Poll question?"
         Thread.sleep(3000);
-        driver.findElement(By.xpath("//div[@id = 'bx-html-editor-iframe-cnt-idPostFormLHE_blogPostForm']")).sendKeys("Poll question?");
+      driver.findElement(By.xpath("//div[@class = 'feed-add-post-text']")).sendKeys("Hello");
+
 
         //Step 3: User should be able to enter/type valid question data into the "Question" input box
         // Enter "What to ask?"
