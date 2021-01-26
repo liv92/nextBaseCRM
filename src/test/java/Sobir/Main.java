@@ -5,8 +5,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import java.*;
 
-public class Main {
+
+public class Main{
   public static void main(String[] args) throws InterruptedException {
 
     //hr and marketing team positive test
@@ -23,6 +25,8 @@ public class Main {
     WebDriverManager.chromedriver().setup();
     WebDriver dr = new ChromeDriver();
     dr.get(loginURL);
+
+
     for (String each : users){
       System.out.println("\t\t\t*********  Testing " + each + " ***********");
       System.out.println("1st step: Login for " + each);
@@ -57,7 +61,7 @@ public class Main {
         continue;
       }
       Thread.sleep(500L);
-      System.out.println("2ng step: Click on \"Time and Reports\" module for " + each);
+      System.out.println("2nd step: Click on \"Time and Reports\" module for " + each);
       WebElement timeAndReports = dr.findElement(By.xpath("//span[contains(text(), 'Time and Reports')]"));
       timeAndReports.click();
       Thread.sleep(500L);
@@ -136,9 +140,9 @@ public class Main {
       Thread.sleep(500L);
       System.out.println("6th step: Click on \"Show start and end times' checkbox for " + each);
       if(!table.getAttribute("class").contains("bx-tm-additions-disabled")){
-        System.out.println("\t" + each + " click on \"Statistics\" checkbox PASS");
+        System.out.println("\t" + each + " click on \"Show start and end times\" checkbox PASS");
       }else {
-        System.out.println("\t" + each + " click on \"Statistics\" checkbox FAIL");
+        System.out.println("\t" + each + " click on \"Show start and end times\" checkbox FAIL");
       }
       Thread.sleep(500L);
       System.out.println("7th step: Logout " + each);

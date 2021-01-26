@@ -24,6 +24,7 @@
             <version>4.2.2</version>
         </dependency>
 
+        <!-- TestNG -->
         <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>
@@ -31,13 +32,12 @@
             <version>7.1.0</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>RELEASE</version>
-            <scope>test</scope>
-        </dependency>
+
+
+
+
 
     </dependencies>
+
 
 </project>
