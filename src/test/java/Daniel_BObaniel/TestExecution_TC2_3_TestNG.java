@@ -1,6 +1,8 @@
 package Daniel_BObaniel;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import javafx.scene.layout.Priority;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,7 +16,7 @@ public class TestExecution_TC2_3_TestNG {
 
     WebDriver driver;
     WebElement usernameField, passwordField, loginButton, userSettingsLink, logoutLink, messageLink,
-            linkToPostLinkInMessage, linkTextInputField, linkInputField, saveButton , sendMessageButton;
+            linkToPostLinkInMessage, linkTextInputField, linkInputField, saveButton, sendMessageButton;
     String password = "UserUser";
 
     @BeforeClass
@@ -22,7 +24,7 @@ public class TestExecution_TC2_3_TestNG {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
         //GOES TO TEST ENVIRONMENT
         driver.get("https://login2.nextbasecrm.com");
@@ -30,7 +32,7 @@ public class TestExecution_TC2_3_TestNG {
 
     @AfterClass
     public void tearDownWindow() {
-        sleep();
+        sleep(3);
         driver.quit();
     }
 
@@ -41,11 +43,11 @@ public class TestExecution_TC2_3_TestNG {
         usernameField.clear();
         usernameField.sendKeys("hr51@cybertekschool.com");
 
-        sleep();
+        sleep(1);
         passwordField = driver.findElement(By.xpath("//input[@name='USER_PASSWORD']"));
         passwordField.sendKeys(password);
 
-        sleep();
+        sleep(1);
         loginButton = driver.findElement(By.xpath("//input[@class='login-btn']"));
         loginButton.click();
     }
@@ -56,25 +58,31 @@ public class TestExecution_TC2_3_TestNG {
         userSettingsLink = driver.findElement(By.xpath("//span[@id='user-name']"));
         userSettingsLink.click();
 
-        sleep();
+        sleep(3);
         logoutLink = driver.findElement(By.xpath("//span[.='Log out']"));
         logoutLink.click();
+
+        sleep(2);
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+
+
 
     }
 
 
-    @Test
-    public void TestZ() {
+    @Test (priority = 3)
+    public void TestA() {
         messageLink = driver.findElement(By.xpath("//span[.='Message']"));
         messageLink.click();
-        sleep();
+        sleep(2);
 
-        linkToPostLinkInMessage =  xPath("//span[@class='bxhtmled-top-bar-btn bxhtmled-button-link']");
+        linkToPostLinkInMessage = xPath("//span[@class='bxhtmled-top-bar-btn bxhtmled-button-link']");
         linkToPostLinkInMessage.click();
 
-        sleep();
+        sleep(2);
         Assert.assertTrue(xPath("//div[@class='bx-core-adm-dialog-head']").isDisplayed());    //div[@class='bx-core-adm-dialog-head']
-        sleep();
+        sleep(2);
 
         linkTextInputField = xPath("//input[@id='linkidPostFormLHE_blogPostForm-text']");
         linkTextInputField.sendKeys("GOOGLE1");
@@ -92,27 +100,40 @@ public class TestExecution_TC2_3_TestNG {
 
     }
 
-   @Test
-    public void TestG(){
-        System.out.println("This should run last! Alphabetically");
+    @Test (priority = 1)
+    public void TestG() {
+
+        System.out.println("Test for inputing into the iFrame input field");
+        messageLink = driver.findElement(By.xpath("//span[.='Message']"));
+        messageLink.click();
+        sleep(2);
+
+        WebElement mainIframe = xPath("//iFrame[@class='bx-editor-iframe']");
+        driver.switchTo().frame(mainIframe);
+
+        sleep(1);
+        xPath("//body[@contenteditable='true']").sendKeys("HelloWorld");
+
+        driver.switchTo().parentFrame();
+
     }
 
-    @Test
-    public void TestA(){
+    @Test (priority = 2)
+    public void TestZ() {
         System.out.println("This runs first! Alphabetically");
     }
 
-    public void sleep() {
+    public void sleep(int seconds) {
         try {
-            Thread.sleep(3000);
+            Thread.sleep(seconds * 1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
-    public WebElement xPath(String xpathString){
-        WebElement webElement = driver.findElement(By.xpath(xpathString));
-        return webElement;
+    public WebElement xPath(String xpathString) {
+        return driver.findElement(By.xpath(xpathString));
+
     }
 
 
